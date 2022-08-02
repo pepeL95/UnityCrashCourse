@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d6177b8f469da4692c9670bb8dd452, type: 3}
+  m_Name: Weather
+  m_EditorClassIdentifier: 
+  properties:
+    units: us
+    forecastGenerator: BaselineForecastGenerator
+    validTimes: 2022-07-26T08:00:00+00:00/P8DT6H
+    elevation:
+      unitCode: wmoUnit:m
+      value: 2.1336
+    periods:
+    - number: 1
+      Name: Today
+      isDaytime: 1
+      temperature: 94
+      temperatureUnit: F
+      windSpeed: 8 to 12 mph
+      windDirection: ESE
+      icon: https://api.weather.gov/icons/land/day/sct/tsra_hi,70?size=medium
+      shortForecast: Mostly Sunny then Chance Showers And Thunderstorms
+      detailedForecast: A chance of showers and thunderstorms after 2pm. Mostly sunny.
+        High near 94, with temperatures falling to around 89 in the afternoon. Heat
+        index values as high as 108. East southeast wind 8 to 12 mph, with gusts
+        as high as 18 mph. Chance of precipitation is 70%. New rainfall amounts less
+        than a tenth of an inch possible.
+    - number: 2
+      Name: Tonight
+      isDaytime: 0
+      temperature: 75
+      temperatureUnit: F
+      windSpeed: 6 to 10 mph
+      windDirection: ESE
+      icon: https://api.weather.gov/icons/land/night/tsra_hi,70/sct?size=medium
+      shortForecast: Chance Showers And Thunderstorms then Partly Cloudy
+      detailedForecast: A chance of showers and thunderstorms before 8pm, then scattered
+        showers and thunderstorms between 8pm and 11pm. Partly cloudy, with a low
+        around 75. Heat index values as high as 97. East southeast wind 6 to 10 mph,
+        with gusts as high as 18 mph. Chance of precipitation is 70%. New rainfall
+        amounts between a tenth and quarter of an inch possible.
+    - number: 3
+      Name: Wednesday
+      isDaytime: 1
+      temperature: 93
+      temperatureUnit: F
+      windSpeed: 6 to 10 mph
+      windDirection: SSE
+      icon: https://api.weather.gov/icons/land/day/tsra_hi,30/tsra_hi,70?size=medium
+      shortForecast: Scattered Showers And Thunderstorms
+      detailedForecast: Scattered showers and thunderstorms between 8am and 2pm,
+        then a chance of showers and thunderstorms. Sunny. High near 93, with temperatures
+        falling to around 89 in the afternoon. Heat index values as high as 109.
+        South southeast wind 6 to 10 mph. Chance of precipitation is 70%. New rainfall
+        amounts between a quarter and half of an inch possible.
+    - number: 4
+      Name: Wednesday Night
+      isDaytime: 0
+      temperature: 76
+      temperatureUnit: F
+      windSpeed: 2 to 9 mph
+      windDirection: S
+      icon: https://api.weather.gov/icons/land/night/tsra_hi,70/sct?size=medium
+      shortForecast: Chance Showers And Thunderstorms then Partly Cloudy
+      detailedForecast: A chance of showers and thunderstorms before 8pm. Partly
+        cloudy, with a low around 76. Heat index values as high as 98. South wind
+        2 to 9 mph. Chance of precipitation is 70%.
+    - number: 5
+      Name: Thursday
+      isDaytime: 1
+      temperature: 95
+      temperatureUnit: F
+      windSpeed: 5 to 8 mph
+      windDirection: SSW
+      icon: https://api.weather.gov/icons/land/day/hot/tsra_hi,20?size=medium
+      shortForecast: Sunny then Isolated Showers And Thunderstorms
+      detailedForecast: Isolated showers and thunderstorms after 2pm. Sunny, with
+        a high near 95. South southwest wind 5 to 8 mph. Chance of precipitation
+        is 20%.
+    - number: 6
+      Name: Thursday Night
+      isDaytime: 0
+      temperature: 74
+      temperatureUnit: F
+      windSpeed: 3 to 8 mph
+      windDirection: NNE
+      icon: https://api.weather.gov/icons/land/night/tsra_hi,20/few?size=medium
+      shortForecast: Isolated Showers And Thunderstorms then Mostly Clear
+      detailedForecast: Isolated showers and thunderstorms before 8pm. Mostly clear,
+        with a low around 74. North northeast wind 3 to 8 mph. Chance of precipitation
+        is 20%.
+    - number: 7
+      Name: Friday
+      isDaytime: 1
+      temperature: 95
+      temperatureUnit: F
+      windSpeed: 3 to 8 mph
+      windDirection: E
+      icon: https://api.weather.gov/icons/land/day/hot/tsra_hi,30?size=medium
+      shortForecast: Sunny then Scattered Showers And Thunderstorms
+      detailedForecast: Scattered showers and thunderstorms after 2pm. Sunny, with
+        a high near 95. East wind 3 to 8 mph. Chance of precipitation is 30%.
+    - number: 8
+      Name: Friday Night
+      isDaytime: 0
+      temperature: 74
+      temperatureUnit: F
+      windSpeed: 8 mph
+      windDirection: E
+      icon: https://api.weather.gov/icons/land/night/tsra_hi,30/few?size=medium
+      shortForecast: Scattered Showers And Thunderstorms then Mostly Clear
+      detailedForecast: Scattered showers and thunderstorms before 8pm. Mostly clear,
+        with a low around 74. East wind around 8 mph. Chance of precipitation is
+        30%.
+    - number: 9
+      Name: Saturday
+      isDaytime: 1
+      temperature: 95
+      temperatureUnit: F
+      windSpeed: 6 to 9 mph
+      windDirection: ESE
+      icon: https://api.weather.gov/icons/land/day/hot/tsra_hi,40?size=medium
+      shortForecast: Sunny then Scattered Showers And Thunderstorms
+      detailedForecast: Scattered showers and thunderstorms after 2pm. Sunny, with
+        a high near 95. East southeast wind 6 to 9 mph. Chance of precipitation is
+        40%.
+    - number: 10
+      Name: Saturday Night
+      isDaytime: 0
+      temperature: 75
+      temperatureUnit: F
+      windSpeed: 8 mph
+      windDirection: SE
+      icon: https://api.weather.gov/icons/land/night/tsra_hi,40/sct?size=medium
+      shortForecast: Scattered Showers And Thunderstorms then Partly Cloudy
+      detailedForecast: Scattered showers and thunderstorms before 8pm. Partly cloudy,
+        with a low around 75. Chance of precipitation is 40%.
+    - number: 11
+      Name: Sunday
+      isDaytime: 1
+      temperature: 95
+      temperatureUnit: F
+      windSpeed: 6 to 10 mph
+      windDirection: ESE
+      icon: https://api.weather.gov/icons/land/day/hot/tsra_hi,30?size=medium
+      shortForecast: Sunny then Scattered Showers And Thunderstorms
+      detailedForecast: Scattered showers and thunderstorms after 2pm. Sunny, with
+        a high near 95. Chance of precipitation is 30%.
+    - number: 12
+      Name: Sunday Night
+      isDaytime: 0
+      temperature: 75
+      temperatureUnit: F
+      windSpeed: 9 mph
+      windDirection: ESE
+      icon: https://api.weather.gov/icons/land/night/tsra_hi,30/sct?size=medium
+      shortForecast: Scattered Showers And Thunderstorms then Partly Cloudy
+      detailedForecast: Scattered showers and thunderstorms before 8pm. Partly cloudy,
+        with a low around 75. Chance of precipitation is 30%.
+    - number: 13
+      Name: Monday
+      isDaytime: 1
+      temperature: 96
+      temperatureUnit: F
+      windSpeed: 8 mph
+      windDirection: ESE
+      icon: https://api.weather.gov/icons/land/day/hot/tsra_hi,40?size=medium
+      shortForecast: Sunny then Scattered Showers And Thunderstorms
+      detailedForecast: Scattered showers and thunderstorms after 2pm. Sunny, with
+        a high near 96. Chance of precipitation is 40%.
+    - number: 14
+      Name: Monday Night
+      isDaytime: 0
+      temperature: 76
+      temperatureUnit: F
+      windSpeed: 8 mph
+      windDirection: ESE
+      icon: https://api.weather.gov/icons/land/night/tsra_hi,40/few?size=medium
+      shortForecast: Scattered Showers And Thunderstorms then Mostly Clear
+      detailedForecast: Scattered showers and thunderstorms before 8pm. Mostly clear,
+        with a low around 76. Chance of precipitation is 40%.
