@@ -9,13 +9,8 @@ public class CubeCollision : MonoBehaviour
     {
         //Check for a match with the specified name on any GameObject that collides with your GameObject
         if (hit.collider.gameObject.name == "Cube1")
-        {
-            //Debug.Log(hit.transform.parent.gameObject.name);
-            //Destroy(hit.collider.transform.parent.gameObject);
-            originManager.AtomicRespawn(hit.collider.transform.parent.gameObject);
-            //originManager.AtomicRespawnOrigin(hit.collider.transform.parent)
-            
-        }
+            originManager.AtomicRespawn(hit.collider.transform.parent.gameObject);    
+        
 
      }
 }

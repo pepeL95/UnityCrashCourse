@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
-
 public class OriginManager : MonoBehaviour
 {
     [SerializeField] private GameSettingsScriptableObject gameSettings;
@@ -14,34 +11,28 @@ public class OriginManager : MonoBehaviour
         // Default Values
         spawningLimit = 5;
         spawnControl = spawningLimit;
-       
-        for (int i = 0; i < spawningLimit; i++)
-            SpawnOrigin();
-        
+        InitializeEnemyOrigins();
     }
+
     private void Update()
     {
         if (gameSettings.originSpawnInstantiationLimit != 0)
             spawningLimit = gameSettings.originSpawnInstantiationLimit;
         if (spawnControl < spawningLimit)
         {
-            RespawnOrigin();
-            spawnControl++;
+            spawnControl = spawningLimit;
+            FillOriginSpawningGap();
         }
     }
-    public void SpawnOrigin() => ObjectPooling.SharedInstance.pool.Get();
+    public void InitializeEnemyOrigins() => StartCoroutine(InitializeEnemies());
     public void RespawnOrigin() => StartCoroutine(Respawn());
-    IEnumerator Respawn()
-    {
-        yield return new WaitForSeconds(5f); 
-        SpawnOrigin();
-    }
+    public void FillOriginSpawningGap() => StartCoroutine(FillSpawningGap());
+    public void SpawnOrigin() => ObjectPooling.SharedInstance.pool.Get();
+    public int GetActiveEnemies() => ObjectPooling.SharedInstance.pool.CountActive;
     public void AtomicRespawn(GameObject toDestroy)
     {
         /* Destroys and respawns (if possible) in one atomic function */
         ObjectPooling.SharedInstance.pool.Release(toDestroy);
-        
-        
         if (GetActiveEnemies() < spawningLimit)
             RespawnOrigin();
     }
@@ -50,15 +41,26 @@ public class OriginManager : MonoBehaviour
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyCube"))
             ObjectPooling.SharedInstance.pool.Release(go);
     }
-
-    public int GetActiveEnemies()
+    IEnumerator Respawn()
     {
-        int activeEnemies = 0;
-        var enemies = GameObject.FindGameObjectsWithTag("EnemyCube");
-        foreach (var enemy in enemies)
-            if (enemy.active)
-                activeEnemies++;
-        return activeEnemies;
+        yield return new WaitForSeconds(5f); 
+        SpawnOrigin();
+    }
+    IEnumerator FillSpawningGap()
+    {
+        for (int i = ObjectPooling.SharedInstance.pool.CountAll; i < spawningLimit; i++)
+        {
+            yield return new WaitForSeconds(5.0f);
+            SpawnOrigin();
+        }
+    }
+    IEnumerator InitializeEnemies()
+    {
+        for (int i = 0; i < spawningLimit; i++)
+        {
+            yield return new WaitForSeconds(5.0f);
+            SpawnOrigin();
+        }
     }
 }
 
