@@ -2,49 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class OriginManager : MonoBehaviour
 {
-    [SerializeField] private GameObject origin;
     [SerializeField] private GameSettingsScriptableObject gameSettings;
-    private int spawnCount;
-    private int spawningLimit;
-
+    public int spawningLimit;
+    private int spawnControl;
     private void Start()
     {
         // Default Values
-        spawnCount = 0;
         spawningLimit = 5;
-        SpawnOrigin();
+        spawnControl = spawningLimit;
+       
+        for (int i = 0; i < spawningLimit; i++)
+            SpawnOrigin();
+        
     }
-    public void SpawnOrigin()
+    private void Update()
     {
-        if (origin == null)
-            return;
-        Instantiate(origin);
+        if (gameSettings.originSpawnInstantiationLimit != 0)
+            spawningLimit = gameSettings.originSpawnInstantiationLimit;
+        if (spawnControl < spawningLimit)
+        {
+            RespawnOrigin();
+            spawnControl++;
+        }
     }
+    public void SpawnOrigin() => ObjectPooling.SharedInstance.pool.Get();
     public void RespawnOrigin() => StartCoroutine(Respawn());
     IEnumerator Respawn()
     {
-        // update origin speed from web browser
-        if (gameSettings.originSpawnInstantiationLimit != 0)
-            spawningLimit = gameSettings.originSpawnInstantiationLimit;
-        
-        if (spawnCount <= spawningLimit)
-        {
-            yield return new WaitForSeconds(5f);
-            SpawnOrigin();
-            spawnCount++;
-        }
+        yield return new WaitForSeconds(5f); 
+        SpawnOrigin();
     }
-
+    public void AtomicRespawn(GameObject toDestroy)
+    {
+        /* Destroys and respawns (if possible) in one atomic function */
+        ObjectPooling.SharedInstance.pool.Release(toDestroy);
+        
+        
+        if (GetActiveEnemies() < spawningLimit)
+            RespawnOrigin();
+    }
     public void DestroyAll()
     {
-        //Debug.Log(GameObject.FindGameObjectsWithTag("EnemyCube").Length);
-        foreach (GameObject o in GameObject.FindGameObjectsWithTag("EnemyCube"))
-        {
-            Destroy(o);
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("EnemyCube"))
+            ObjectPooling.SharedInstance.pool.Release(go);
+    }
 
-        }
+    public int GetActiveEnemies()
+    {
+        int activeEnemies = 0;
+        var enemies = GameObject.FindGameObjectsWithTag("EnemyCube");
+        foreach (var enemy in enemies)
+            if (enemy.active)
+                activeEnemies++;
+        return activeEnemies;
     }
 }
 

@@ -19,8 +19,8 @@ public class GetWeatherScript : MonoBehaviour
     private void Start()
     {
         // defualt values
-        lat = "42.397985";
-        lon = "-121.042865";
+        //lat = "42.397985";
+        //lon = "-121.042865";
         
     }
     public void GetData()
@@ -29,8 +29,8 @@ public class GetWeatherScript : MonoBehaviour
     }
     IEnumerator GetWeatherFromGPS(string lat, string lon)
     {
-        //lat = "27.8661";
-        //lon = "-82.3265";
+        lat = "27.8661";
+        lon = "-82.3265";
         string uri = "https://api.weather.gov/points/" + lat + "," + lon;
         using (UnityWebRequest req = UnityWebRequest.Get(uri))
         { // Request and wait for the desired page.

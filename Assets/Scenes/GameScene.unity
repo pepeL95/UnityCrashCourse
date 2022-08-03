@@ -170,7 +170,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0780532, y: 1}
+    m_SensorSize: {x: 2.1781754, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0780532, y: 1}
+    m_SensorSize: {x: 2.1781754, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1168,7 +1168,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0780532, y: 1}
+    m_SensorSize: {x: 2.1781754, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1318,6 +1318,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1807634715}
   - component: {fileID: 1807634716}
+  - component: {fileID: 1807634717}
+  - component: {fileID: 1807634718}
   m_Layer: 0
   m_Name: OriginManager
   m_TagString: Untagged
@@ -1352,8 +1354,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cdbd306a4c2eaa4495e174a45504b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origin: {fileID: 2929683448747955478, guid: 25f57bf27a96afe4d9fdc7627bd56944, type: 3}
   gameSettings: {fileID: 11400000, guid: 3a2367ce4310ad841be0ab31c6f778ad, type: 2}
+  spawningLimit: 0
+--- !u!114 &1807634717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807634713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b0cc2c6710ef64f8c26fef4f85116c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 2929683448747955478, guid: 25f57bf27a96afe4d9fdc7627bd56944, type: 3}
+  collectionChecks: 1
+  maxPoolSize: 10
+--- !u!114 &1807634718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807634713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e72f589d554e945b7b6624e7a61cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: 3a2367ce4310ad841be0ab31c6f778ad, type: 2}
+  speed: 0
 --- !u!1 &1871656901
 GameObject:
   m_ObjectHideFlags: 3
@@ -1407,7 +1438,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0780532, y: 1}
+    m_SensorSize: {x: 2.1781754, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -11,6 +11,7 @@ public class OriginTransform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = new Vector3(Random.Range(-20.0f, 20.0f), 1.5f, Random.Range(-20.0f, 20.0f));
         initialXPosition = transform.position.x;
         speed = 5f;
     }
